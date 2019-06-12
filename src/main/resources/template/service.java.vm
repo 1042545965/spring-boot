@@ -23,7 +23,7 @@ import java.util.List;
      * @param  ${table.entityPath} 信息
      * @return 结果
      */
-    public List<${entity}> selectList(${entity} ${table.entityPath});
+    public List<${entity}> selectList(EntityWrapper<${entity}> entityWrapper);
 
     /**
      * 查询${tableComment}
