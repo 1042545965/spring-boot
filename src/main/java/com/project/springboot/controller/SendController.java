@@ -1,3 +1,4 @@
+/*
 package com.project.springboot.controller;
  
 import com.project.springboot.rabbit.sender.FirstSender;
@@ -7,11 +8,13 @@ import org.springframework.web.bind.annotation.RestController;
  
 import java.util.UUID;
  
+*/
 /**
  * @author zhuzhe
  * @date 2018/5/25 16:00
  * @email 1529949535@qq.com
- */
+ *//*
+
 @RestController
 public class SendController {
  
@@ -25,3 +28,4 @@ public class SendController {
         return uuid;
     }
 }
+*/

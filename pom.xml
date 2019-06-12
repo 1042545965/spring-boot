@@ -117,10 +117,10 @@
 			<artifactId>jedis</artifactId>
 		</dependency>
 		<!-- rabbitmq依赖 -->
-		<dependency>
+		<!--<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-amqp</artifactId>
-		</dependency>
+		</dependency>-->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>

@@ -4,10 +4,7 @@ import java.util.Map;
 
 import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.InjectionConfig;
-import com.baomidou.mybatisplus.generator.config.DataSourceConfig;
-import com.baomidou.mybatisplus.generator.config.GlobalConfig;
-import com.baomidou.mybatisplus.generator.config.PackageConfig;
-import com.baomidou.mybatisplus.generator.config.StrategyConfig;
+import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.converts.MySqlTypeConvert;
 import com.baomidou.mybatisplus.generator.config.rules.DbColumnType;
 import com.baomidou.mybatisplus.generator.config.rules.DbType;
@@ -19,25 +16,25 @@ import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 public class MabatisPlusGenerator {
 
     //生成文件所在项目路径
-    private static String baseProjectPath = "E:\\code";
+    private static String baseProjectPath = "C:\\my_driver\\dkz_code";
 
     //基本包名
-    private static String basePackage="com.fx.tthouse.model";
+    private static String basePackage="com.partner";
     //作者
     private static String authorName="conlon";
     //要生成的表名
-    private static String[] tables= {"sys_user"};
+    private static String[] tables= {"pet_bs_user"};
     //table前缀
-    private static String prefix="";
+    private static String prefix="pet_bs";
 
     //数据库配置四要素
     private static String driverName = "com.mysql.jdbc.Driver";
 //    private static String url = "jdbc:mysql://192.168.1.50:3306/tthouse_dev2?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true";
 //    private static String username = "tthouse";
 //    private static String password = "tthouse123";
-    private static String url = "jdbc:mysql://localhost:3306/db2?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true";
+    private static String url = "jdbc:mysql://localhost:3306/partner_dev?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true";
     private static String username = "root";
-    private static String password = "root";
+    private static String password = "123456";
 
     public static void main(String[] args) {
 
@@ -71,7 +68,7 @@ public class MabatisPlusGenerator {
         gen.setGlobalConfig(new GlobalConfig()
                 .setOutputDir( baseProjectPath + "/src/main/java")//输出目录
                 .setFileOverride(true)// 是否覆盖文件
-                .setActiveRecord(true)// 开启 activeRecord 模式
+                .setActiveRecord(false)// 开启 activeRecord 模式
                 .setEnableCache(false)// XML 二级缓存
                 .setBaseResultMap(true)// XML ResultMap
                 .setBaseColumnList(true)// XML columList
@@ -95,6 +92,7 @@ public class MabatisPlusGenerator {
                 .setNaming(NamingStrategy.underline_to_camel)// 表名生成策略
                 .setInclude(tables) // 需要生成的表
                 .setRestControllerStyle(true)
+//                .setFieldPrefix(new String[]{fildPrefix}) 字段前缀
                 //.setExclude(new String[]{"test"}) // 排除生成的表
                 // 自定义实体父类
                 // .setSuperEntityClass("com.baomidou.demo.TestEntity")
@@ -102,6 +100,7 @@ public class MabatisPlusGenerator {
                 //.setSuperEntityColumns(new String[]{"test_id"})
                 //.setTableFillList(tableFillList)
                 // 自定义 mapper 父类 默认BaseMapper
+
                 //.setSuperMapperClass("com.baomidou.mybatisplus.mapper.BaseMapper")
                 // 自定义 service 父类 默认IService
                 // .setSuperServiceClass("com.baomidou.demo.TestService")
@@ -168,18 +167,18 @@ public class MabatisPlusGenerator {
         /**
          * 模板配置
          */
-        //gen.setTemplate(
-                // 关闭默认 xml 生成，调整生成 至 根目录
-               // new TemplateConfig().setXml(null)
-                // 自定义模板配置，模板可以参考源码 /mybatis-plus/src/main/resources/template 使用 copy
+        gen.setTemplate(
+                 //关闭默认 xml 生成，调整生成 至 根目录
+                new TemplateConfig()
+                 //自定义模板配置，模板可以参考源码 /mybatis-plus/src/main/resources/template 使用 copy
                 // 至您项目 src/main/resources/template 目录下，模板名称也可自定义如下配置：
-                // .setController("...");
-                // .setEntity("...");
-                // .setMapper("...");
-                // .setXml("...");
-                // .setService("...");
-                // .setServiceImpl("...");
-        //);
+                 .setController("/template/comtroller.java.vm")
+                 .setEntity("/template/entity.java.vm")
+                 .setMapper("template/mapper.java.vm")
+                 .setXml("template/mapper.xml.vm")
+                 .setService("template/service.java.vm")
+                 .setServiceImpl("template/serviceImpl.java.vm")
+        );
 
         // 执行生成
         gen.execute();

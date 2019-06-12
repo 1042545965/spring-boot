@@ -1,14 +1,17 @@
+/*
 package com.project.springboot.rabbit.receiver;
  
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
  
+*/
 /**
  * 消息消费者1
  * @author zhuzhe
  * @date 2018/5/25 17:32
  * @email 1529949535@qq.com
- */
+ *//*
+
 @Component
 public class FirstConsumer {
  
@@ -18,3 +21,4 @@ public class FirstConsumer {
         System.out.println("FirstConsumer {} handleMessage :"+message);
     }
 }
+*/
