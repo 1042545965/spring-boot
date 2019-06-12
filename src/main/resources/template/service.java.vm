@@ -1,0 +1,61 @@
+package ${package.Service};
+
+import com.baomidou.mybatisplus.plugins.Page;
+import ${package.Entity}.${entity};
+import ${superServiceClassPackage};
+import com.dcy.model.BootStrapTable;
+
+import java.util.List;
+
+    /**
+     * <p>
+     * $!{table.comment} 服务类
+     * </p>
+     *
+     * @author ${author}
+     * @since ${date}
+     */
+    public interface ${table.serviceName} {
+
+    /**
+     * 查询${tableComment}
+     *
+     * @param  ${table.entityPath} 信息
+     * @return 结果
+     */
+    public List<${entity}> selectList(${entity} ${table.entityPath});
+
+    /**
+     * 查询${tableComment}
+     *
+     * @param  id 信息
+     * @return 结果
+     */
+    public ${entity} select${entity}ById(Long id);
+
+    /**
+     * 查询${tableComment}
+     *
+     * @param ${table.entityPath} 信息
+     * @return 结果
+     */
+    public ${entity} select${entity}ByOne(${entity} ${table.entityPath});
+
+    /**
+     * 修改${tableComment}
+     *
+     * @param  ${table.entityPath} 信息
+     * @return 结果
+     */
+    public int update${entity}(${entity} ${table.entityPath});
+
+    /**
+     * 新增${tableComment}
+     *
+     * @param  ${table.entityPath} 信息
+     * @return 结果
+     */
+    public int insert${entity}(${entity} ${table.entityPath});
+
+
+}

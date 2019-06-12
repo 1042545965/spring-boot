@@ -1,0 +1,103 @@
+package ${package.ServiceImpl};
+
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.plugins.Page;
+import com.dcy.model.BootStrapTable;
+import ${package.Entity}.${entity};
+import ${package.Mapper}.${table.mapperName};
+import ${package.Service}.${table.serviceName};
+import ${superServiceImplClassPackage};
+import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
+import com.ruoyi.common.utils.StringUtils;
+
+import java.util.List;
+/**
+ * <p>
+ * $!{table.comment} 服务实现类
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+@Service
+public class ${table.serviceImplName} implements ${table.serviceName} {
+
+
+    @Autowired
+    private ${table.mapperName} ${table.entityPath}Dao;
+
+    /**
+     * 查询 $!{table.comment}
+     *
+     * @param  ${table.entityPath} 信息
+     * @return 结果
+     */
+    @Override
+    public List<${entity}> selectList(EntityWrapper<${entity}> entityWrapper) {
+        return ${table.entityPath}Dao.selectList(entityWrapper);
+    }
+
+    /**
+     * 查询$!{table.comment}
+     *
+     * @param  id 信息
+     * @return 结果
+     */
+    @Override
+    public ${entity} select${entity}ById(Long id) {
+            return ${table.entityPath}Dao.selectById(id);
+    }
+
+    /**
+     * 查询$!{table.comment}
+     *
+     * @param ${table.entityPath} 信息
+     * @return 结果
+     */
+    @Override
+    public ${entity} select${entity}ByOne(${entity} ${table.entityPath}) {
+            return ${table.entityPath}Dao.selectOne(${table.entityPath});
+    }
+
+    /**
+     * 修改$!{table.comment}
+     *
+     * @param ${table.entityPath} 信息
+     * @return 结果
+     */
+    @Override
+    public int update${entity}(${entity} ${table.entityPath}) {
+            return ${table.entityPath}Dao.updateById(${table.entityPath});
+    }
+
+    /**
+     * 新增$!{table.comment}
+     *
+     * @param ${table.entityPath} 信息
+     * @return 结果
+     */
+    @Override
+    public int insert${entity}(${entity} ${table.entityPath}) {
+            return ${table.entityPath}Dao.insert(${table.entityPath});
+    }
+    /**
+     *  公共查询条件
+     * @param ${table.entityPath}
+     * @return
+     */
+    #set($getprefix="get")
+    private EntityWrapper<${entity}> getEntityWrapper(${entity} ${table.entityPath}){
+            EntityWrapper<${entity}> entityWrapper = new EntityWrapper<>();
+        //条件拼接
+        #foreach($field in ${table.fields})
+            #if(!${field.keyFlag})
+                    if (StringUtils.isNotBlank(${table.entityPath}.${getprefix}${field.capitalName}())){
+                    entityWrapper.eq("${field.name}",${table.entityPath}.${getprefix}${field.capitalName}());
+                    }
+            #end
+        #end
+            return entityWrapper;
+    }
+}
