@@ -49,6 +49,7 @@ private static final long serialVersionUID = 1L;
     /**
      * ${field.comment}
      */
+    @ApiModelProperty(value="${field.comment}")
     #end
     #if(${field.keyFlag})
     ## 主键
