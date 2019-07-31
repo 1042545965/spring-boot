@@ -1,14 +1,13 @@
 package com.project.springboot.bean;
 
-import com.baomidou.mybatisplus.annotations.TableField;
-import com.baomidou.mybatisplus.annotations.TableId;
+
 
 import java.io.Serializable;
 
 public class Department implements Serializable{
-    @TableId("id")
+//    @TableId("id")
     private Integer id;
-    @TableField("departmentName")
+//    @TableField("departmentName")
     private String departmentName;
 
     public void setId(Integer id) {

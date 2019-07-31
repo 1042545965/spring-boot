@@ -47,9 +47,24 @@ private static final long serialVersionUID = 1L;
     #end
     #if("$!field.comment" != "")
     /**
-     * ${field.comment}
+     * comment = ${field.comment}
+     * convert = ${field.convert}
+     * keyFlag = ${field.keyFlag}
+     * keyIdentityFlag =${field.keyIdentityFlag}
+     * name = ${field.name}
+     * type = ${field.type}
+     * propertyName = ${field.propertyName}
+     * columnType = ${field.columnType}
+     * fill = ${field.fill}
+     * customMap = ${field.customMap}
+     * NULL = ${field.customMap.NULL}
      */
     @ApiModelProperty(value="${field.comment}")
+    #end
+    #if("$!field.customMap.NULL" != "YES")
+    #set($fund= ${field.type.indexOf("(")} + 1)
+    @NotNull
+    @Length(max = ${field.type.substring(${fund},${field.type.indexOf(")")})}, min = 0)
     #end
     #if(${field.keyFlag})
     ## 主键
